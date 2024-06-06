@@ -1,0 +1,41 @@
+@startuml
+class Bank {
++createSavingAccount(client : NaturalClient)
++createCheckingAccount(client : Client, amount : double)
+}
+
+abstract class Account {
+}
+
+class Date {
+-year : int
+-month : int
+-day : int
+}
+
+class SavingAccount {}
+
+class CheckingAccount {}
+
+class Card {}
+
+class CheckBook {}
+
+abstract class Client {
+-name : String
+}
+
+class NormalClient {}
+
+class LegalClient {}
+
+Bank -->"*" Client
+CheckingAccount -->"*" CheckBook
+Client -->"1..*" Account
+Account -> Card
+
+SavingAccount -u-|> Account
+CheckingAccount -u-|> Account
+NormalClient -u-|> Client
+LegalClient -u-|> Client
+@enduml

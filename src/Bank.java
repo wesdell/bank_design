@@ -16,7 +16,14 @@ public class Bank {
   }
 
   public Account createCheckingAccount(Client client, double amount) {
-    return null;
+    if (!client.isValidAmount(amount)) {
+      return null;
+    }
+
+    CheckingAccount checkingAccount = new CheckingAccount(amount);
+    client.addAccount(checkingAccount);
+    this.addClient(client);
+    return checkingAccount;
   }
 
   private void addClient(Client client) {

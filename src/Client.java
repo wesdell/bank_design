@@ -11,4 +11,6 @@ abstract public class Client {
   public void addAccount(Account account) {
     this.accounts[this.registeredAccounts++] = account;
   }
+
+  public abstract boolean isValidAmount(double amount);
 }

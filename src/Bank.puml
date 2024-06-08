@@ -1,5 +1,5 @@
 @startuml
-class Account {
+abstract class Account {
   - paymentTools: SavingPaymentTool[]
   - amount: double
   - maintenanceCost: double
@@ -28,7 +28,7 @@ class CheckingAccount {
   + takeOut(double): void
   # getServicesAmount(): int
 }
-class Client {
+abstract class Client {
   - registeredAccounts: int
   - name: String
   - accounts: Account[]

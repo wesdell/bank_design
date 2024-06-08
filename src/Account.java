@@ -1,7 +1,7 @@
 public abstract class Account {
   private final SavingPaymentTool[] paymentTools;
   private double amount;
-  private double maintainanceCost;
+  private double maintenanceCost;
 
   public Account(double amount) {
     this.amount = amount;
@@ -19,8 +19,8 @@ public abstract class Account {
     this.amount = newAmount;
   }
 
-  public void getMaintainanceCost() {
-    this.maintainanceCost = this.getServicesAmount();
+  public void getMaintenanceCost() {
+    this.maintenanceCost = this.getServicesAmount();
   }
 
   public void deposit(double amountToDeposit) {

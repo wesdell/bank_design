@@ -1,47 +1,67 @@
 @startuml
+class Account {
+  - paymentTools: SavingPaymentTool[]
+  - amount: double
+  - maintenanceCost: double
+  + deposit(double): void
+  + getAmount(): double
+  + isPositiveNumber(double): boolean
+  + toString(): String
+  + getMaintenanceCost(): void
+  + setAmount(double): void
+  + takeOut(double): void
+  # getServicesAmount(): int
+}
 class Bank {
-+createSavingAccount(client : NaturalClient)
-+createCheckingAccount(client : Client, amount : double)
+  - clients: Client[]
+  - name: String
+  - registeredClients: int
+  + createCheckingAccount(Client, double): CheckingAccount
+  + createSavingAccount(NaturalClient): SavingAccount
+  - addClient(Client): void
+  + toString(): String
 }
-
-abstract class Account {
+class CheckBook
+class CheckingAccount {
+  - checkBook: CheckBook
+  + DEBT_LIMIT: double
+  + takeOut(double): void
+  # getServicesAmount(): int
 }
-
-class Date {
--year : int
--month : int
--day : int
+class Client {
+  - registeredAccounts: int
+  - name: String
+  - accounts: Account[]
+  + isValidAmountToGetSavingAccount(double): boolean
+  + addAccount(Account): void
 }
-
-class SavingAccount {}
-
-class CheckingAccount {}
-
-class Card {}
-
-class CheckBook {}
-
-class PaymentTool {}
-
-abstract class Client {
--name : String
+class DebitCard
+class LegalClient {
+  + isValidAmountToGetSavingAccount(double): boolean
 }
+class Main {
+  + main(String[]): void
+}
+class NaturalClient {
+  + isValidAmountToGetSavingAccount(double): boolean
+}
+class OnlineBank
+class PaymentTool
+class SavingAccount {
+  + INTEREST_PERCENTAGE: double
+  # getServicesAmount(): int
+  + takeOut(double): void
+}
+class SavingBook
+class SavingPaymentTool
 
-class NormalClient {}
-
-class LegalClient {}
-
-Bank -->"*" Client
-CheckingAccount -->"*" CheckBook
-Client -->"1..*" Account
-Account -> Card
-
-Card --|> SavingPaymentTool
-CheckBook --|> PaymentTool
-SavingPaymentTool --|> PaymentTool
-
-SavingAccount -u-|> Account
-CheckingAccount -u-|> Account
-NormalClient -u-|> Client
-LegalClient -u-|> Client
+CheckBook          --|>  PaymentTool
+CheckingAccount    --|>  Account
+DebitCard          --|>  SavingPaymentTool
+LegalClient        --|>  Client
+NaturalClient      --|>  Client
+OnlineBank         --|>  SavingPaymentTool
+SavingAccount      --|>  Account
+SavingBook         --|> SavingPaymentTool
+SavingPaymentTool  --|>  PaymentTool
 @enduml

@@ -12,5 +12,5 @@ abstract public class Client {
     this.accounts[this.registeredAccounts++] = account;
   }
 
-  public abstract boolean isValidAmount(double amount);
+  public abstract boolean isValidAmountToGetSavingAccount(double amount);
 }

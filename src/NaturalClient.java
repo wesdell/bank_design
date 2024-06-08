@@ -4,7 +4,7 @@ public class NaturalClient extends Client {
   }
 
   @Override
-  public boolean isValidAmount(double amount) {
+  public boolean isValidAmountToGetSavingAccount(double amount) {
     return amount >= 200;
   }
 }

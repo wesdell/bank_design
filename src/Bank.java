@@ -8,15 +8,15 @@ public class Bank {
     this.clients = new Client[10];
   }
 
-  public Account createSavingAccount(NaturalClient client) {
+  public SavingAccount createSavingAccount(NaturalClient client) {
     SavingAccount savingAccount = new SavingAccount();
     client.addAccount(savingAccount);
     this.addClient(client);
     return savingAccount;
   }
 
-  public Account createCheckingAccount(Client client, double amount) {
-    if (!client.isValidAmount(amount)) {
+  public CheckingAccount createCheckingAccount(Client client, double amount) {
+    if (!client.isValidAmountToGetSavingAccount(amount)) {
       return null;
     }
 

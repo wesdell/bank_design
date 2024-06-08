@@ -21,6 +21,8 @@ class Card {}
 
 class CheckBook {}
 
+class PaymentTool {}
+
 abstract class Client {
 -name : String
 }
@@ -33,6 +35,10 @@ Bank -->"*" Client
 CheckingAccount -->"*" CheckBook
 Client -->"1..*" Account
 Account -> Card
+
+Card --|> SavingPaymentTool
+CheckBook --|> PaymentTool
+SavingPaymentTool --|> PaymentTool
 
 SavingAccount -u-|> Account
 CheckingAccount -u-|> Account

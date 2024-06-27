@@ -1,11 +1,11 @@
+import java.util.ArrayList;
+
 public class Bank {
   private final String name;
-  private int registeredClients;
-  private Client[] clients;
+  private final ArrayList<Client> clients = new ArrayList<Client>();
 
   public Bank(String name) {
     this.name = name;
-    this.clients = new Client[10];
   }
 
   public SavingAccount createSavingAccount(NaturalClient client) {
@@ -27,7 +27,7 @@ public class Bank {
   }
 
   private void addClient(Client client) {
-    this.clients[this.registeredClients++] = client;
+    this.clients.add(client);
   }
 
   @Override

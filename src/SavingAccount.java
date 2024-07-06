@@ -1,6 +1,4 @@
 public class SavingAccount extends Account {
-  public static final double INTEREST_PERCENTAGE = 1.00;
-
   public SavingAccount() {
     super(0);
   }
@@ -11,10 +9,10 @@ public class SavingAccount extends Account {
   }
 
   @Override
-  public void takeOut(double amount) {
+  public void takeOut(double amount) throws OverDrawException {
     double amountToTakeOut = this.getAmount() - amount;
     if (!this.isPositiveNumber(amountToTakeOut)) {
-      return;
+      throw new OverDrawException(amountToTakeOut, this.getAmount());
     }
     this.setAmount(amountToTakeOut);
   }

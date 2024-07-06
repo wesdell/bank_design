@@ -34,7 +34,7 @@ public abstract class Account {
     return number > 0;
   }
 
-  public abstract void takeOut(double amountToTakeOut);
+  public abstract void takeOut(double amountToTakeOut) throws OverDrawException;
   protected abstract int getServicesAmount();
 
   @Override

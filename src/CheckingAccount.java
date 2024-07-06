@@ -1,7 +1,7 @@
 public class CheckingAccount extends Account {
   public static final double DEBT_LIMIT = -1000.00;
 
-  private CheckBook checkBook;
+  private final CheckBook checkBook;
 
   public CheckingAccount(double amount) {
     super(amount);
@@ -14,10 +14,10 @@ public class CheckingAccount extends Account {
   }
 
   @Override
-  public void takeOut(double amount) {
+  public void takeOut(double amount) throws OverDrawException {
     double amountToTakeOut = this.getAmount() - amount;
     if (amountToTakeOut < DEBT_LIMIT) {
-      return;
+      throw new OverDrawException(amountToTakeOut, DEBT_LIMIT);
     }
     this.setAmount(amountToTakeOut);
   }

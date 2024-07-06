@@ -13,4 +13,9 @@ abstract public class Client {
   }
 
   public abstract boolean isValidAmountToGetSavingAccount(double amount);
+
+  @Override
+  public String toString() {
+    return name;
+  }
 }
